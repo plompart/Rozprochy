@@ -58,12 +58,11 @@ public class Technician {
 
         //specs listener queues
         specs.forEach((exam) -> {
-            String key = "exam." + exam;
             try {
                 Channel channel = connection.createChannel();
                 channel.basicQos(1);
-                channel.queueDeclare(key, false, false, false, null);
-                channel.basicConsume(key, false, new DefaultConsumer(channel) {
+                channel.queueDeclare(exam, false, false, false, null);
+                channel.basicConsume(exam, false, new DefaultConsumer(channel) {
                     @Override
                     public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                         String message = new String(body, "UTF-8");
