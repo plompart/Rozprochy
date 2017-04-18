@@ -63,9 +63,10 @@ public class Doctor {
         //exams writers queues
         List<String> examinations = Arrays.asList("ankle", "elbow", "knee");
         examinations.forEach((exam) -> {
+            String key = "exam." + exam;
             try {
                 Channel channel = connection.createChannel();
-                channel.queueDeclare(exam, false, false, false, null);
+                channel.queueDeclare(key, false, false, false, null);
                 examChannels.put(exam, channel);
             } catch (IOException e) {
                 e.printStackTrace();
