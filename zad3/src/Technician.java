@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -70,7 +71,10 @@ public class Technician {
                         System.out.println("Received: " + message);
 
                         try {
-                            Thread.sleep(2000);
+                            Random rand = new Random();
+                            int value = rand.nextInt(5) + 1;
+
+                            Thread.sleep(value * 1000);
 
                             String[] parts = message.split(" ");
 

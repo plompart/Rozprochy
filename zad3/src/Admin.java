@@ -34,7 +34,7 @@ public class Admin {
             }
         });
 
-        //info listener exchange fanout
+        //info writer exchange direct
         infoWriter = connection.createChannel();
         infoWriter.exchangeDeclare(INFO_EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
