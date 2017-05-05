@@ -9,14 +9,12 @@ import io.grpc.stub.StreamObserver;
 import java.io.BufferedReader;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 /**
  * Created by Patryk on 2017-05-05.
  */
 
 public class HospitalClient {
-    private static final Logger logger = Logger.getLogger(HospitalClient.class.getName());
     private final ManagedChannel channel;
     private final HospitalGrpc.HospitalStub hospNonBlockingStub;
     private final HospitalGrpc.HospitalBlockingStub hospBlockingStub;
@@ -138,11 +136,11 @@ public class HospitalClient {
                             @Override
                             public void onNext(Examination result) {
                                 readExamination(result);
-                                try{
-                                    Thread.sleep(1000);
-                                }catch(InterruptedException e){
-                                    e.printStackTrace();
-                                }
+//                                try{
+//                                    Thread.sleep(1000);
+//                                }catch(InterruptedException e){
+//                                    e.printStackTrace();
+//                                }
                             }
 
                             @Override

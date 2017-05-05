@@ -19,8 +19,8 @@ import java.util.Scanner;
  */
 
 public class HospitalImpl extends HospitalImplBase {
-    String[] mainExamsSet = {"cholesterol", "ALT", "AST", "potassium", "sodium"};
-    String[] minorExamsSet = {"WBC", "RBC", "HGB", "HCT"};
+    private String[] mainExamsSet = {"cholesterol", "ALT", "AST", "potassium", "sodium"};
+    private String[] minorExamsSet = {"WBC", "RBC", "HGB", "HCT"};
 
     @Override
     public void addExamination(ExaminationRequest er, StreamObserver<Result> so){
@@ -82,6 +82,13 @@ public class HospitalImpl extends HospitalImplBase {
                 }
             }
             Examination examination = createExamination(parts);
+
+//            try{
+//                Thread.sleep(10000);
+//            }catch(InterruptedException e){
+//                e.printStackTrace();
+//            }
+
             so.onNext(examination);
             so.onCompleted();
         } catch (Exception e) {
