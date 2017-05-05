@@ -40,7 +40,7 @@ public class Technician {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
 
-        //info listener fanout exchange
+        //info listener direct exchange
         Channel infoListener = connection.createChannel();
         infoListener.exchangeDeclare(INFO_EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
         String queueName = infoListener.queueDeclare().getQueue();
